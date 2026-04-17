@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+
+.streamlit/
+tmp_uploads/
+
+assets/
+app.py.bak
