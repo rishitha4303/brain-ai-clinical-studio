@@ -1,54 +1,165 @@
-# Brain AI Clinical Studio
+# 🧠 Brain Imaging Analysis Studio
 
-Streamlit-based clinical decision support app for brain imaging analysis:
-- CT hemorrhage classification with Grad-CAM explainability
-- MRI tumor segmentation with overlays and metrics
-- Severity assessment and report generation
+> Clinical Decision Support System for **CT Hemorrhage Detection** and **MRI Tumor Segmentation** with Explainable AI (XAI)
 
-## Tech Stack
-- Python
-- Streamlit
-- TensorFlow/Keras model inference
-- OpenCV and NumPy image processing
+---
 
-## Project Structure
-- `app_old.py` - current primary UI/app flow
-- `app.py`, `new_app.py` - alternate/legacy app variants
-- `preprocessing/` - CT and MRI preprocessing pipelines
-- `models/` - model loaders and model weight files (`.h5`)
-- `xai/` - explainability overlays for CT/MRI
-- `utils/` - severity and report utilities
-- `requirements.txt` - Python dependencies
+## 🚀 Overview
 
-## What Was Updated (UI/UX Refinements)
-Recent changes focused on clinician dashboard usability while preserving inference logic:
+Brain Imaging Analysis Studio is an integrated AI-based system that processes both **CT** and **MRI** brain scans within a unified pipeline.
 
-### Hero Scan Preview Collage
-- Converted preview tiles to compact square dashboard tiles
-- Applied `object-fit: cover` for better image cropping
-- Moved tile labels to lightweight in-image overlays
-- Tightened spacing and removed bulky outer wrappers for cleaner alignment
-- Fixed stray rendered HTML closing tag issue in hero render path
+It helps in:
+- 🩸 Detecting hemorrhage in CT scans  
+- 🧬 Segmenting tumors in MRI scans  
+- 🔍 Providing visual explanations (XAI)  
+- 📊 Estimating severity and risk  
+- 🧾 Generating patient-friendly insights  
 
-### CT Visualization Section
-- Reduced oversized Grad-CAM display for better balance
-- Reworked CT visual block to fill right-side empty space with contextual cards
-- Added CT Focus Summary card beside Grad-CAM
-- Added in-panel heatmap legend card
-- Tightened middle layout gap between image and side panel
+---
 
-### Confidence and Severity Visuals
-- Confidence switched to a bullet-chart style marker track
-- Severity changed to a different variant (stepped Low/Moderate/High strip)
-- Kept styles intentionally non-identical for clearer visual hierarchy
+## 🧩 Features
 
-## Run Locally
-1. Create and activate a virtual environment
-2. Install dependencies:
-   - `pip install -r requirements.txt`
-3. Launch Streamlit:
-   - `streamlit run app_old.py`
+- 🧠 Multi-Modal Analysis (CT + MRI)  
+- 📊 Severity & Risk Visualization  
+- 🔍 Explainable AI (Grad-CAM & Overlays)  
+- ⚖️ Class Imbalance Handling  
+- 📈 Model Comparison & Optimization  
+- 🖥️ Clinical Dashboard UI  
 
-## Notes
-- Model weight files in `models/` are required for full inference.
-- If pushing `.h5` files to GitHub fails due to file size, use Git LFS.
+---
+
+## 🏗️ System Architecture
+
+```text
+Input → Preprocessing → Model → Explainability → Severity → Report
+```
+
+### CT Pipeline
+- HU Windowing → DenseNet121 → Grad-CAM → Severity  
+
+### MRI Pipeline
+- Slice Extraction → 2D U-Net → Segmentation → Tumor %  
+
+---
+
+## 🗂️ Datasets
+
+### 📌 RSNA Intracranial Hemorrhage
+- ~750K filtered CT images  
+- Binary classification  
+
+### 📌 BraTS 2021
+- 1251 patients  
+- Modalities: FLAIR, T1ce, T2  
+
+---
+
+## ⚙️ Tech Stack
+
+- 🐍 Python  
+- 🧠 TensorFlow / Keras  
+- 🔬 OpenCV, NumPy  
+- 📊 Matplotlib  
+- 🖥️ Streamlit  
+- 🎨 HTML + CSS  
+
+---
+
+## 📊 Results
+
+### 🩸 CT Hemorrhage Detection
+- Accuracy: **85%**  
+- Recall: **0.84**  
+- AUC: **0.92**  
+- Optimal Threshold: **0.4**  
+
+### 🧬 MRI Tumor Segmentation
+- Dice Score: **~0.82**  
+- IoU: **~0.91**  
+- Best Epoch: **9**  
+
+---
+
+## 🧪 Model Comparison
+
+| Model        | Accuracy | Sensitivity | Specificity |
+|--------------|---------:|------------:|------------:|
+| CNN          | 0.82     | 0.35        | 0.90        |
+| ResNet50     | 0.85     | 0.40        | 1.00        |
+| DenseNet121  | **0.89** | **0.51**    | 0.95        |
+
+✔ DenseNet121 selected for best balanced performance  
+
+---
+
+## 🔍 Explainability
+
+- Grad-CAM highlights important regions in CT scans  
+- MRI overlay shows tumor localization  
+- Improves model transparency and trust  
+
+---
+
+## 🖥️ UI Features
+
+- 📊 Dashboard-style layout  
+- 📈 Risk & severity indicators  
+- 🧠 Image visualization panels  
+- 🧾 Patient-friendly reports  
+
+---
+
+## 📁 Project Structure
+
+```text
+project/
+│── ct_model/
+│── mri_model/
+│── preprocessing/
+│── ui/
+│── results/
+│── app.py
+│── requirements.txt
+│── README.md
+```
+
+---
+
+## ▶️ How to Run
+
+```bash
+git clone https://github.com/your-repo-name
+cd project
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+---
+
+## 🎯 Future Work
+
+- Extend to X-ray, chest, and retina imaging
+- Integrate LLM-based report generation
+- Deploy on cloud platforms (AWS / GCP)
+- Add mobile-friendly interface
+
+---
+
+## ⚠️ Disclaimer
+
+This project is for **research and educational purposes only**.  
+It is **NOT a substitute for professional medical advice, diagnosis, or treatment**.
+
+---
+
+## 👩‍💻 Author
+
+**Rishitha Konidena**  
+Computer Science Engineering  
+AI & Healthcare Enthusiast
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
