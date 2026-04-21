@@ -1,4 +1,5 @@
-﻿import streamlit as st
+﻿import os
+import streamlit as st
 import numpy as np
 import nibabel as nib
 import tempfile
@@ -10,6 +11,8 @@ import cv2
 import matplotlib.pyplot as plt
 from pathlib import Path
 from datetime import datetime
+
+os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 
 # Keeping your original logic imports
 from preprocessing.preprocess_ct import preprocess_ct
